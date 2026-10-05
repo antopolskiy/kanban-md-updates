@@ -6,7 +6,7 @@ Site: https://antopolskiy.github.io/kanban-md-updates/
 
 ## Hosting contract
 
-- GitHub Pages publishes the root of `main`. `.nojekyll` preserves the standalone HTML without a site generator.
+- The `Deploy reports` GitHub Actions workflow publishes the root of `main` to GitHub Pages. Pages uses the Actions publishing source. `.nojekyll` keeps the static-site intent explicit; there is no site generator.
 - A release report is `releases/vX.Y.Z/index.html`. Link to `https://antopolskiy.github.io/kanban-md-updates/releases/vX.Y.Z/` in that release's notes.
 - Each report has a neighboring `manifest.json` with its release revision, capture revision, SHA256, release URL and successful release-workflow URL.
 - Keep existing release paths. Do not replace an old version with a newer report. Corrections to a published report require an explicit correction commit and an updated manifest/hash; the staging helper refuses overwrites.
@@ -41,7 +41,7 @@ Site: https://antopolskiy.github.io/kanban-md-updates/
    git push origin main
    ```
 
-6. Wait for the `pages build and deployment` workflow to succeed. Fetch the versioned URL and compare its SHA256 to `manifest.json`; an HTTP 200 alone does not establish that the new page is deployed.
+6. Wait for the `Deploy reports` workflow to succeed. Fetch the versioned URL and compare its SHA256 to `manifest.json`; an HTTP 200 alone does not establish that the new page is deployed.
 7. Add the verified versioned report URL to the human-written GitHub release notes with `gh release edit`. Keep the release's full diff link and contributor attribution.
 
 Future report authors should prepare their previews locally. Publishing is a separate, explicitly authorized release step, not a side effect of report creation. Never publish a preview to a released-version path.
@@ -52,6 +52,6 @@ Future report authors should prepare their previews locally. Publishing is a sep
 node --test scripts/stage-report.test.cjs
 ```
 
-The helper uses only built-in Node.js modules and the existing GitHub CLI. No package installation, Pages tokens or custom Actions workflow is needed.
+The helper uses only built-in Node.js modules and the existing GitHub CLI. No package installation or custom Pages credentials are needed. The existing workflow tests the staging checks, uploads the static files and deploys with GitHub's scoped Pages/OIDC permissions.
 
-GitHub references: [branch publishing](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [Pages API](https://docs.github.com/en/rest/pages/pages).
+GitHub references: [Actions-based Pages publishing](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [Pages API](https://docs.github.com/en/rest/pages/pages).
