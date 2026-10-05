@@ -1,0 +1,12 @@
+{
+  "version": "v0.39.0",
+  "title": "Field Notes / Composable Workflow Views",
+  "published_at": "2026-10-05T16:03:38Z",
+  "application_repository": "https://github.com/antopolskiy/kanban-md",
+  "release_source_sha": "10383c5ae13a49896c70906441c8d39f740635df",
+  "capture_source_sha": "cb84ccd6937d66664573ad468ee393ba302ae6c0",
+  "release_workflow_url": "https://github.com/antopolskiy/kanban-md/actions/runs/37337064926",
+  "release_url": "https://github.com/antopolskiy/kanban-md/releases/tag/v0.39.0",
+  "report_url": "https://antopolskiy.github.io/kanban-md-updates/releases/v0.39.0/",
+  "report_sha256": "ac0729a522350c48daa8176d02fc674c0507e857f98c139043f5a9ceee7131d1"
+}
